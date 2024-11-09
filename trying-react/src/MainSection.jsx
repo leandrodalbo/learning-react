@@ -1,13 +1,25 @@
+import { useState } from "react";
 import MyButton from "./MyButton";
+import UsingHooks from "./UsingHooks";
+import { ShowHideTimer } from "./Timer";
 
 const MainSection = () => {
-  const btns = ["bt0", "bt1", "bt2"];
+  const [timer, setTimer] = useState(true);
+
   return (
     <section>
-      <h2>MainSection</h2>
-      {btns.map((it) => (
-        <MyButton key={it} buttonText={it} />
-      ))}
+      <h2>Hooks Example</h2>
+      <UsingHooks />
+      <h2>Timer Section</h2>
+
+      <button
+        onClick={() => {
+          setTimer(!timer);
+        }}
+      >
+        {timer ? "Hide Timer" : "Show Timer"}
+      </button>
+      <ShowHideTimer show={timer} />
     </section>
   );
 };
